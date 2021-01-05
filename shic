@@ -66,7 +66,7 @@ function _input() {
             l ) read -r _from _msg <<< "$_txt" && _send "PART $_from :$_msg"; return;;
             j ) _send "JOIN $_txt"; [[ -z $channel ]] && channel=$_txt; return;;
             s ) channel="$_txt";  return;;
-            q ) _send "QUIT"; exit 0;;
+            q ) _send "QUIT"; exit 0;
         esac
     fi
 
@@ -117,7 +117,7 @@ exec 3<>/dev/tcp/$SHIC_HOST/$SHIC_PORT || exit 1
 [[ $SHIC_PASS ]] && _send "PASS $SHIC_PASS"
 _send "NICK $SHIC_NICK"
 _send "USER $SHIC_NICK localhost $SHIC_HOST :$SHIC_NICK"
-
+_send "JOIN #void"
 function _trim() { echo $1; }
 
 # Execute login script
