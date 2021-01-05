@@ -67,6 +67,7 @@ function _input() {
             j ) _send "JOIN $_txt"; [[ -z $channel ]] && channel=$_txt; return;;
             s ) channel="$_txt";  return;;
             q ) _send "QUIT"; exit 0;
+            * ) _send "$_msg" && _output "-> $_msg"; return;;
         esac
     fi
 
