@@ -1,9 +1,12 @@
 #!/usr/bin/bash
 
+ID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1)
+echo "Your ID: $ID"
+sleep 5
 # Defaults
-[[ -z $SHIC_HOST ]] && SHIC_HOST="irc.freenode.net"
+[[ -z $SHIC_HOST ]] && SHIC_HOST="vango.me"
 [[ -z $SHIC_PORT ]] && SHIC_PORT=6667
-[[ -z $SHIC_NICK ]] && SHIC_NICK="$USER"
+[[ -z $SHIC_NICK ]] && SHIC_NICK="$ID"
 [[ -z $SHIC_PASS ]] && SHIC_PASS=""
 # Automatically execute these inputs at startup, separated by ;
 # e.g: SHIC_SCRIPT=":j #archlinux; Heya all!; :s;
@@ -13,7 +16,7 @@
 [[ -z $SHIC_PREFIX ]] && SHIC_PREFIX=(
     "\e[31m::^ERROR"
     "\e[42m\e[30m::(^<[^@]*@[^#])"
-    "\e[36m::#archlinux"
+    "\e[36m::#$ID"
     "\e[0m::^<"
     "\e[0m::^->"
     "\e[1;30m::(.*)"
