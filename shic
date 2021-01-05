@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Defaults
 [[ -z $SHIC_HOST ]] && SHIC_HOST="irc.freenode.net"
